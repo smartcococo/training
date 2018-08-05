@@ -33,6 +33,13 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Model\Shop');//แม่หาลูก
     }
+    public function generateToken()
+    {
+        $this->api_token = str_random(60);
+        $this->save();
+
+        return $this->api_token;
+    }
 
 
 }
